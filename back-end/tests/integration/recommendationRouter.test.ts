@@ -3,7 +3,6 @@ import app from "../../src/app";
 import { prisma } from "../../src/database";
 import { recommendationFactory } from "../factories/recommendation";
 import { recommendationRepository } from "../../src/repositories/recommendationRepository";
-import exp from "constants";
 
 beforeEach(async () => {
     await prisma.$executeRaw`TRUNCATE TABLE recommendations`;
@@ -107,6 +106,46 @@ describe("Test POST /recommendations/:id/upvote", () =>{
         const result = await supertest(app).post(`/recommendations/${id}/upvote`).send();
 
         expect(result.status).toBe(404);
+    });
+});
+
+describe("Test POST /recommendations/:id/downvote", () =>{
+    it("Should return statusCode 200, if recommendation successfully liked", async () => {
+        const recommendation = recommendationFactory();
+
+        await supertest(app).post("/recommendations").send(recommendation);
+        const recommendationByName = await recommendationRepository.findByName(recommendation.name);
+
+        const result = await supertest(app).post(`/recommendations/${recommendationByName?.id}/downvote`).send();
+
+        expect(result.status).toBe(200);
+    });
+
+    it("Should return statusCode 404, if id does not exist", async () => {
+        const id = 9999999999;
+
+        const result = await supertest(app).post(`/recommendations/${id}/downvote`).send();
+
+        expect(result.status).toBe(404);
+    });
+
+    it("Must return statusCode 200 and empty result.body, if recommendation score is less than -5", async () => {
+        const recommendation = recommendationFactory();
+
+        await prisma.recommendation.create({
+            data: {
+                ...recommendation,
+                score: -5
+            }
+        });
+
+        const recommendationByName = await recommendationRepository.findByName(recommendation.name);
+        const result = await supertest(app).post(`/recommendations/${recommendationByName?.id}/downvote`).send();
+        
+        const countData = Object.keys(result.body).length;
+
+        expect(result.status).toBe(200);
+        expect(countData).toBe(0);
     });
 });
 
