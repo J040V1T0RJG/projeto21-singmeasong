@@ -2,6 +2,7 @@ import supertest from "supertest";
 import app from "../../src/app";
 import { prisma } from "../../src/database";
 import { recommendationFactory } from "../factories/recommendation";
+import { recommendationRepository } from "../../src/repositories/recommendationRepository";
 
 beforeEach(async () => {
     await prisma.$executeRaw`TRUNCATE TABLE recommendations`;
@@ -54,3 +55,36 @@ describe("Test GET '/recommendations'", () => {
         expect(result.body.length).toBeGreaterThan(0);
     });
 });
+/*
+describe("Test GET '/recommendations/random'", () => {
+
+});
+
+describe("Test GET '/recommendations/top/:amount'", () => {
+    
+});
+*/
+
+describe("Test GET '/recommendations/:id'", () => {
+    it("It should return only a recommendation with the requested id", async () => {
+        const recommendation = recommendationFactory();
+
+        await supertest(app).post("/recommendations").send(recommendation);
+        const recommendationByName = await recommendationRepository.findByName(recommendation.name);
+        
+        const result = await supertest(app).get(`/recommendations/${recommendationByName?.id}`).send();
+
+        expect(result.body).toBeDefined();
+        expect(result.body).toBeInstanceOf(Object);
+        expect(result.body.id).toBe(recommendationByName?.id);
+    });
+
+    it("Should return statusCode 404, if id does not exist", async () => {
+        const id = 9999999999;
+
+        const result = await supertest(app).get(`/recommendations/${id}`).send();
+
+        expect(result.status).toBe(404);
+    });
+});
+

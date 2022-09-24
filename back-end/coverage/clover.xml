@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1664022852701" clover="3.2.0">
-  <project timestamp="1664022852701" name="All files">
-    <metrics statements="91" coveredstatements="52" conditionals="8" coveredconditionals="3" methods="17" coveredmethods="5" elements="116" coveredelements="60" complexity="0" loc="91" ncloc="91" packages="6" files="7" classes="7"/>
+<coverage generated="1664026356162" clover="3.2.0">
+  <project timestamp="1664026356163" name="All files">
+    <metrics statements="91" coveredstatements="58" conditionals="8" coveredconditionals="4" methods="17" coveredmethods="7" elements="116" coveredelements="69" complexity="0" loc="91" ncloc="91" packages="6" files="7" classes="7"/>
     <package name="src">
       <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.ts" path="/home/j040v1t0r/Documents/Programas/Driven/Projetos/projeto21-singmeasong/back-end/src/app.ts">
@@ -26,17 +26,17 @@
       </file>
     </package>
     <package name="src.controllers">
-      <metrics statements="25" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="7" coveredmethods="2"/>
+      <metrics statements="25" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="7" coveredmethods="3"/>
       <file name="recommendationController.ts" path="/home/j040v1t0r/Documents/Programas/Driven/Projetos/projeto21-singmeasong/back-end/src/controllers/recommendationController.ts">
-        <metrics statements="25" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="7" coveredmethods="2"/>
+        <metrics statements="25" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="7" coveredmethods="3"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="7" count="5" type="stmt"/>
-        <line num="8" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="6" type="cond" truecount="1" falsecount="0"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
@@ -50,9 +50,9 @@
         <line num="45" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
       </file>
     </package>
@@ -62,9 +62,9 @@
         <metrics statements="6" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="16" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="2" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="16" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="3" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
       </file>
     </package>
@@ -95,24 +95,24 @@
       </file>
     </package>
     <package name="src.services">
-      <metrics statements="32" coveredstatements="8" conditionals="6" coveredconditionals="1" methods="9" coveredmethods="2"/>
+      <metrics statements="32" coveredstatements="11" conditionals="6" coveredconditionals="2" methods="9" coveredmethods="3"/>
       <file name="recommendationsService.ts" path="/home/j040v1t0r/Documents/Programas/Driven/Projetos/projeto21-singmeasong/back-end/src/services/recommendationsService.ts">
-        <metrics statements="32" coveredstatements="8" conditionals="6" coveredconditionals="1" methods="9" coveredmethods="2"/>
+        <metrics statements="32" coveredstatements="11" conditionals="6" coveredconditionals="2" methods="9" coveredmethods="3"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="8" count="4" type="stmt"/>
-        <line num="11" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="11" count="5" type="cond" truecount="1" falsecount="0"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="31" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="40" count="0" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="40" count="1" type="stmt"/>
         <line num="44" count="1" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
