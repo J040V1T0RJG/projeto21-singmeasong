@@ -57,7 +57,7 @@ describe("Test GET '/recommendations'", () => {
 });
 
 describe("Test GET '/recommendations/random'", () => {
-    it("Must return an array of objects", async () => {
+    it("Must return an objects", async () => {
         const recommendations = [];
 
         for(let i = 0; i < 10; i++) {
@@ -79,11 +79,26 @@ describe("Test GET '/recommendations/random'", () => {
         expect(result.status).toBe(404);
     });
 });
-/*
+
 describe("Test GET '/recommendations/top/:amount'", () => {
-    
+    it("Must return an array of object, of the size that was passed", async () => {
+        const recommendations = [];
+        const amount = 10;
+
+        for(let i = 0; i < 100; i++) {
+            const recommendation = recommendationWithScoreFactory();
+            recommendations.push(recommendation);
+        };
+
+        await prisma.recommendation.createMany({data: recommendations});
+
+        const result = await supertest(app).get(`/recommendations/top/${amount}`).send();
+
+        expect(result.body.length).toBe(amount);
+        expect(result.body).toBeInstanceOf(Array);
+    });
 });
-*/
+
 
 describe("Test GET '/recommendations/:id'", () => {
     it("It should return only a recommendation with the requested id", async () => {
