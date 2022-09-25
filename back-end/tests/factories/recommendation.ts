@@ -8,6 +8,15 @@ const recommendationFactory = (): CreateRecommendationData => {
     };
 };
 
+const recommendationWithScoreFactory = (): {name: string, youtubeLink: string, score: number} => {
+    return {
+        name: faker.lorem.words(),
+        youtubeLink: `https://www.youtube.com/${faker.internet.domainWord()}`,
+        score: Math.floor(Math.random() * 1000) + 1
+    };
+};
+
 export {
-    recommendationFactory
+    recommendationFactory,
+    recommendationWithScoreFactory
 };

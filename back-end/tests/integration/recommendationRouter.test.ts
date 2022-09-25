@@ -1,7 +1,7 @@
 import supertest from "supertest";
 import app from "../../src/app";
 import { prisma } from "../../src/database";
-import { recommendationFactory } from "../factories/recommendation";
+import { recommendationFactory, recommendationWithScoreFactory } from "../factories/recommendation";
 import { recommendationRepository } from "../../src/repositories/recommendationRepository";
 
 beforeEach(async () => {
@@ -55,11 +55,31 @@ describe("Test GET '/recommendations'", () => {
         expect(result.body.length).toBeGreaterThan(0);
     });
 });
-/*
+
 describe("Test GET '/recommendations/random'", () => {
+    it("Must return an array of objects", async () => {
+        const recommendations = [];
 
+        for(let i = 0; i < 10; i++) {
+            const recommendation = recommendationWithScoreFactory();
+            recommendations.push(recommendation);
+        };
+
+        await prisma.recommendation.createMany({data: recommendations});
+
+        const result = await supertest(app).get("/recommendations/random").send();
+
+        expect(result.body).toBeDefined();
+        expect(result.body).toBeInstanceOf(Object);
+    });
+
+    it("Should return statusCode 404, if id does not exist", async () => {
+        const result = await supertest(app).get("/recommendations/random").send();
+
+        expect(result.status).toBe(404);
+    });
 });
-
+/*
 describe("Test GET '/recommendations/top/:amount'", () => {
     
 });
@@ -135,13 +155,13 @@ describe("Test POST /recommendations/:id/downvote", () =>{
         await prisma.recommendation.create({
             data: {
                 ...recommendation,
-                score: -5
+                score: -6
             }
         });
 
         const recommendationByName = await recommendationRepository.findByName(recommendation.name);
         const result = await supertest(app).post(`/recommendations/${recommendationByName?.id}/downvote`).send();
-        
+
         const countData = Object.keys(result.body).length;
 
         expect(result.status).toBe(200);
